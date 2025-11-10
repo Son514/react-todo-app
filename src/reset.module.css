@@ -1,0 +1,54 @@
+/* Remove default margins, paddings, and borders */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set consistent font and smooth text rendering */
+html,
+body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default list and link styles */
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Normalize buttons and inputs */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Make images behave predictably */
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* Use a consistent base line height and background */
+body {
+  line-height: 1.5;
+  background-color: #fff;
+  color: #222;
+}
