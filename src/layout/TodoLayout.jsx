@@ -1,0 +1,23 @@
+const TodoLayout = ({ children }) => {
+  return (
+    <div>
+      <fieldset className="fieldset  border-neutral rounded-box w-xs border p-4">
+        <legend className="fieldset-legend">My Todo</legend>
+        <div role="tablist" className="tabs tabs-lift pb-3">
+          <a role="tab" className="tab grow">
+            Home
+          </a>
+          <a role="tab" className="tab grow tab-active text-secondary">
+            Todo
+          </a>
+          <a role="tab" className="tab grow">
+            About
+          </a>
+        </div>
+        {children}
+      </fieldset>
+    </div>
+  );
+};
+
+export default TodoLayout;
