@@ -4,13 +4,16 @@ const TodoLayout = ({ children }) => {
       <fieldset className="fieldset  border-neutral rounded-box w-xs border p-4">
         <legend className="fieldset-legend">My Todo</legend>
         <div role="tablist" className="tabs tabs-lift pb-3">
-          <a role="tab" className="tab grow">
+          <a role="tab" className="tab grow font-bold text-neutral">
             Home
           </a>
-          <a role="tab" className="tab grow tab-active text-secondary">
+          <a
+            role="tab"
+            className="tab grow tab-active text-secondary font-bold"
+          >
             Todo
           </a>
-          <a role="tab" className="tab grow">
+          <a role="tab" className="tab grow text-neutral font-bold">
             About
           </a>
         </div>
