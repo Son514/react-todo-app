@@ -6,8 +6,7 @@ const App = () => {
   const handleSubmit = (todo) => {
     console.log("Form Data: ", todo);
 
-    // TODO: Add onchange to all the fields in the form to update the state. use AI as much as possible
-    // TODO: Insert the formData to the newTodo state
+    setNewTodo(todo);
   };
   return (
     <div className="min-h-screen flex items-center justify-center ">

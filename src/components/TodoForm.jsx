@@ -40,12 +40,18 @@ const TodoForm = ({ onSubmit }) => {
             placeholder="Enter description"
             className="textarea textarea-neutral"
             name="description"
+            onChange={handleChange}
           ></textarea>
         </div>
         {/* DUE DATE */}
         <div className="form-group">
           <label className="label text-neutral">Due Date</label>
-          <input type="date" className="input input-neutral" name="dueDate" />
+          <input
+            type="date"
+            className="input input-neutral"
+            name="dueDate"
+            onChange={handleChange}
+          />
         </div>
         {/* PRIORITY  */}
         <div className="form-group">
@@ -54,6 +60,7 @@ const TodoForm = ({ onSubmit }) => {
             defaultValue="Low"
             className="select select-neutral"
             name="priority"
+            onChange={handleChange}
           >
             <option>Low</option>
             <option>Medium</option>
