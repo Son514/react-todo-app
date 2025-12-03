@@ -15,11 +15,21 @@ const TodoForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
+
+    // Cear the form after submission
+    clearForm();
   };
 
+  const clearForm = () => {
+    setFormData({
+      name: "",
+      description: "",
+      dueDate: "",
+      priority: "Low",
+    });
+  };
   return (
     <div>
-      {/* TODO: Create a TodoForm to add new todo items(with state). */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {/* NAME */}
         <div className="form-group flex flex-col gap-2">
@@ -29,8 +39,9 @@ const TodoForm = ({ onSubmit }) => {
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your todo"
-            className="input input-neutral"
+            className="input input-neutral w-full"
             name="name"
+            autoComplete="off"
           />
         </div>
         {/* DESCRIPTION */}
@@ -38,9 +49,11 @@ const TodoForm = ({ onSubmit }) => {
           <label className="label text-neutral">Description</label>
           <textarea
             placeholder="Enter description"
-            className="textarea textarea-neutral"
+            className="textarea textarea-neutral w-full"
             name="description"
             onChange={handleChange}
+            value={formData.description}
+            autoComplete="off"
           ></textarea>
         </div>
         {/* DUE DATE */}
@@ -48,19 +61,22 @@ const TodoForm = ({ onSubmit }) => {
           <label className="label text-neutral">Due Date</label>
           <input
             type="date"
-            className="input input-neutral"
+            className="input input-neutral w-full"
             name="dueDate"
             onChange={handleChange}
+            value={formData.dueDate}
+            autoComplete="off"
           />
         </div>
         {/* PRIORITY  */}
         <div className="form-group">
           <label className="label text-neutral">Priority</label>
           <select
-            defaultValue="Low"
-            className="select select-neutral"
+            className="select select-neutral w-full"
             name="priority"
             onChange={handleChange}
+            value={formData.priority}
+            autcomplete="off"
           >
             <option>Low</option>
             <option>Medium</option>

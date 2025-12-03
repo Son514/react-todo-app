@@ -1,16 +1,19 @@
 import TodoForm from "./components/TodoForm";
 import TodoLayout from "./layout/TodoLayout";
 import { useState } from "react";
+import TodoList from "./components/TodoList";
 const App = () => {
-  const [newTodo, setNewTodo] = useState({});
-  const handleSubmit = (todo) => {
-    console.log("Form Data: ", todo);
+  // Holds the todolist items
+  const [todoList, setTodoList] = useState([]);
 
-    setNewTodo(todo);
+  const handleSubmit = (todo) => {
+    setTodoList((prevTodoList) => [...prevTodoList, todo]);
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <TodoLayout>
+        <TodoList todoList={todoList} />
         <TodoForm onSubmit={handleSubmit} />
       </TodoLayout>
     </div>

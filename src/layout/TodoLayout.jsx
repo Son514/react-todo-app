@@ -1,7 +1,7 @@
 const TodoLayout = ({ children }) => {
   return (
     <div>
-      <fieldset className="fieldset  border-neutral rounded-box w-xs border p-4">
+      <fieldset className="fieldset  border-neutral rounded-box w-sm border p-4">
         <legend className="fieldset-legend">My Todo</legend>
         <div role="tablist" className="tabs tabs-lift pb-3">
           <a role="tab" className="tab grow font-bold text-neutral">
