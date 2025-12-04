@@ -6,15 +6,20 @@ const App = () => {
   // Holds the todolist items
   const [todoList, setTodoList] = useState([]);
 
+  //State value to manage tabs | Home, Todo, About
+  const [tabs, setTabs] = useState("Home");
+
   const handleSubmit = (todo) => {
     setTodoList((prevTodoList) => [...prevTodoList, todo]);
   };
 
+  const setTabsHandler = (tab) => setTabs(tab);
+
   return (
     <div className="min-h-screen flex items-center justify-center ">
-      <TodoLayout>
-        <TodoList todoList={todoList} />
-        <TodoForm onSubmit={handleSubmit} />
+      <TodoLayout tabs={tabs} onTab={setTabsHandler}>
+        {tabs === "Home" && <TodoList todoList={todoList} />}
+        {tabs === "Todo" && <TodoForm onSubmit={handleSubmit} />}
       </TodoLayout>
     </div>
   );

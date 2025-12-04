@@ -30,6 +30,8 @@ const TodoForm = ({ onSubmit }) => {
   };
   return (
     <div>
+      {/* TODO: Add an alert message when a todo is added successfully */}
+      {/* TODO: Create a AlertMessage component to show success message */}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {/* NAME */}
         <div className="form-group flex flex-col gap-2">
