@@ -1,4 +1,6 @@
 import { useState } from "react";
+import SuccessMessage from "./SuccessMessage";
+
 const TodoForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     id: crypto.randomUUID(),
@@ -9,6 +11,12 @@ const TodoForm = ({ onSubmit }) => {
     completed: false,
   });
 
+  const [alertMessage, setAlertMessage] = useState({
+    type: "",
+    message: "",
+    status: 2, // 0: success, 1: error, 2: null
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -16,6 +24,45 @@ const TodoForm = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // VALIDATION
+    if (formData.name.trim() === "") {
+      setAlertMessage((prev) => ({
+        ...prev,
+        type: "error",
+        message: "Name is required.",
+        status: 1,
+      }));
+      return;
+    }
+
+    if (formData.description.trim() === "") {
+      setAlertMessage((prev) => ({
+        ...prev,
+        type: "error",
+        message: "Description is required",
+        status: 1,
+      }));
+      return;
+    }
+
+    if (formData.dueDate.trim() === "") {
+      setAlertMessage((prev) => ({
+        ...prev,
+        type: "error",
+        message: "Due Date is required",
+        status: 1,
+      }));
+      return;
+    }
+    // Display success message
+    setAlertMessage((prev) => ({
+      ...prev,
+      type: "success",
+      message: "You have successfully added a todo!",
+      status: 0,
+    }));
+
     onSubmit(formData);
 
     // Cear the form after submission
@@ -36,6 +83,9 @@ const TodoForm = ({ onSubmit }) => {
     <div>
       {/* TODO: Add an alert message when a todo is added successfully */}
       {/* TODO: Create a AlertMessage component to show success message */}
+      {alertMessage.status !== 2 && (
+        <SuccessMessage alertMessage={alertMessage} />
+      )}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {/* NAME */}
         <div className="form-group flex flex-col gap-2">
