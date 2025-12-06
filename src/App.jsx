@@ -15,10 +15,20 @@ const App = () => {
 
   const setTabsHandler = (tab) => setTabs(tab);
 
+  const handleToggleTodo = (id) => {
+    setTodoList((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <TodoLayout tabs={tabs} onTab={setTabsHandler}>
-        {tabs === "Home" && <TodoList todoList={todoList} />}
+        {tabs === "Home" && (
+          <TodoList todoList={todoList} onToggleTodo={handleToggleTodo} />
+        )}
         {tabs === "Todo" && <TodoForm onSubmit={handleSubmit} />}
       </TodoLayout>
     </div>

@@ -1,10 +1,12 @@
 import { useState } from "react";
 const TodoForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
+    id: crypto.randomUUID(),
     name: "",
     description: "",
     dueDate: "",
     priority: "Low",
+    completed: false,
   });
 
   const handleChange = (e) => {
@@ -22,10 +24,12 @@ const TodoForm = ({ onSubmit }) => {
 
   const clearForm = () => {
     setFormData({
+      id: crypto.randomUUID(),
       name: "",
       description: "",
       dueDate: "",
       priority: "Low",
+      completed: false,
     });
   };
   return (
