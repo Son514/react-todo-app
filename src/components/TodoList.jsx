@@ -2,6 +2,13 @@ import EditIcon from "../icons/EditIcon";
 import DeleteIcon from "../icons/DeleteIcon";
 const TodoList = ({ todoList, onToggleTodo }) => {
   return (
+    // TODO: Display priority level with different colors
+
+    // TODO: Add edit functionality
+
+    // TODO: Add delete functionality
+
+    // TODO: Add filtering functionality for completed and proiority levels
     <div>
       <ul className="list bg-base-100 rounded-box gap-4">
         <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">

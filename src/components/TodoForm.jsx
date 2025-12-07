@@ -81,8 +81,6 @@ const TodoForm = ({ onSubmit }) => {
   };
   return (
     <div>
-      {/* TODO: Add an alert message when a todo is added successfully */}
-      {/* TODO: Create a AlertMessage component to show success message */}
       {alertMessage.status !== 2 && (
         <SuccessMessage alertMessage={alertMessage} />
       )}
