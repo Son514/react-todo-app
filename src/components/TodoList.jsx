@@ -1,15 +1,18 @@
+import { useState } from "react";
 import EditIcon from "../icons/EditIcon";
 import DeleteIcon from "../icons/DeleteIcon";
-const TodoList = ({ todoList, onToggleTodo }) => {
-  const variants = {
-    Low: "badge-success",
-    Medium: "badge-warning",
-    High: "badge-error",
-  };
+import EditForm from "./EditForm";
+import ListItems from "./ListItems";
 
+const TodoList = ({
+  todoList,
+  onToggleTodo,
+  onUpdateTodo,
+  editID,
+  setEditID,
+  onUndoEditing,
+}) => {
   return (
-    // TODO: Display priority level with different colors
-
     // TODO: Add edit functionality
 
     // TODO: Add delete functionality
@@ -25,42 +28,21 @@ const TodoList = ({ todoList, onToggleTodo }) => {
           : todoList.map((todo) => (
               <li
                 key={todo.id}
-                className="list-row border border-neutral gap-y-0 items-center"
+                className={`list-row ${editID === todo.id && "grid-cols-1"} border border-neutral gap-y-0 items-center`}
               >
-                <div>
-                  <input
-                    type="checkbox"
-                    className="checkbox border-neutral"
-                    checked={todo.completed}
-                    onChange={() => onToggleTodo(todo.id)}
+                {editID === todo.id ? (
+                  <EditForm
+                    todo={todo}
+                    onUpdateTodo={onUpdateTodo}
+                    onUndoEditing={onUndoEditing}
                   />
-                </div>
-                <div>
-                  <div
-                    className={`uppercase ${todo.completed ? "line-through opacity-50" : ""} font-bold`}
-                  >
-                    {todo.name}
-                  </div>
-                  {/* <p className="text-xs font-semibold opacity-60"> */}
-                  {/*   Doing a full body workout with another set of chest, back, */}
-                  {/* </p> */}
-                </div>
-                <p className="list-col-wrap text-xs">
-                  {todo.description}
-                  <br />
-                  <span className="mr-1">{todo.dueDate}</span>
-                  <span
-                    className={`badge ${variants[todo.priority]} badge-outline badge-xs`}
-                  >
-                    {todo.priority}
-                  </span>
-                </p>
-                <button className="btn btn-square btn-ghost">
-                  <EditIcon />{" "}
-                </button>
-                <button className="btn btn-square btn-ghost">
-                  <DeleteIcon />{" "}
-                </button>
+                ) : (
+                  <ListItems
+                    todo={todo}
+                    onToggleTodo={onToggleTodo}
+                    setEditID={setEditID}
+                  />
+                )}
               </li>
             ))}
       </ul>

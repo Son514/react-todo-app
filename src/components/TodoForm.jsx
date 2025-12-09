@@ -130,7 +130,7 @@ const TodoForm = ({ onSubmit }) => {
             name="priority"
             onChange={handleChange}
             value={formData.priority}
-            autcomplete="off"
+            autoComplete="off"
           >
             <option>Low</option>
             <option>Medium</option>

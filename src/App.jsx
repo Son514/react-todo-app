@@ -9,6 +9,9 @@ const App = () => {
   //State value to manage tabs | Home, Todo, About
   const [tabs, setTabs] = useState("Home");
 
+  // State that manage editForm components
+  const [editID, setEditID] = useState(0);
+
   const handleSubmit = (todo) => {
     setTodoList((prevTodoList) => [...prevTodoList, todo]);
   };
@@ -23,11 +26,28 @@ const App = () => {
     );
   };
 
+  const handleUpdateTodo = (id, updatedTodo) => {
+    setTodoList((prev) =>
+      prev.map((todo) => (todo.id === id ? updatedTodo : todo)),
+    );
+    handleUndoEditing();
+  };
+
+  // Undo the editing phase
+  const handleUndoEditing = () => setEditID(0);
+
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <TodoLayout tabs={tabs} onTab={setTabsHandler}>
         {tabs === "Home" && (
-          <TodoList todoList={todoList} onToggleTodo={handleToggleTodo} />
+          <TodoList
+            todoList={todoList}
+            onToggleTodo={handleToggleTodo}
+            onUpdateTodo={handleUpdateTodo}
+            editID={editID}
+            setEditID={setEditID}
+            onUndoEditing={handleUndoEditing}
+          />
         )}
         {tabs === "Todo" && <TodoForm onSubmit={handleSubmit} />}
       </TodoLayout>
