@@ -14,8 +14,6 @@ const TodoList = ({
   onDeleteTodo,
 }) => {
   return (
-    // TODO: Add delete functionality
-
     // TODO: Add filtering functionality for completed and proiority levels
     <div>
       <ul className="list bg-base-100 rounded-box gap-4 min-h-[400px] max-h-[400px] overflow-auto">
