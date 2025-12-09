@@ -1,7 +1,7 @@
 import EditIcon from "../icons/EditIcon";
 import DeleteIcon from "../icons/DeleteIcon";
 
-const ListItems = ({ todo, onToggleTodo, setEditID }) => {
+const ListItems = ({ todo, onToggleTodo, setEditID, onDeleteTodo }) => {
   const variants = {
     Low: "badge-success",
     Medium: "badge-warning",
@@ -41,7 +41,10 @@ const ListItems = ({ todo, onToggleTodo, setEditID }) => {
       >
         <EditIcon />
       </button>
-      <button className="btn btn-square btn-ghost">
+      <button
+        className="btn btn-square btn-ghost"
+        onClick={() => onDeleteTodo(todo.id)}
+      >
         <DeleteIcon />
       </button>
     </>

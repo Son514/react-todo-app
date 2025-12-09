@@ -7,14 +7,13 @@ import ListItems from "./ListItems";
 const TodoList = ({
   todoList,
   onToggleTodo,
-  onUpdateTodo,
   editID,
   setEditID,
   onUndoEditing,
+  onUpdateTodo,
+  onDeleteTodo,
 }) => {
   return (
-    // TODO: Add edit functionality
-
     // TODO: Add delete functionality
 
     // TODO: Add filtering functionality for completed and proiority levels
@@ -41,6 +40,7 @@ const TodoList = ({
                     todo={todo}
                     onToggleTodo={onToggleTodo}
                     setEditID={setEditID}
+                    onDeleteTodo={onDeleteTodo}
                   />
                 )}
               </li>

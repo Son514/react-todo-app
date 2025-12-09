@@ -33,6 +33,10 @@ const App = () => {
     handleUndoEditing();
   };
 
+  const handleDeleteTodo = (id) => {
+    setTodoList((prev) => prev.filter((todo) => todo.id !== id));
+  };
+
   // Undo the editing phase
   const handleUndoEditing = () => setEditID(0);
 
@@ -47,6 +51,7 @@ const App = () => {
             editID={editID}
             setEditID={setEditID}
             onUndoEditing={handleUndoEditing}
+            onDeleteTodo={handleDeleteTodo}
           />
         )}
         {tabs === "Todo" && <TodoForm onSubmit={handleSubmit} />}
