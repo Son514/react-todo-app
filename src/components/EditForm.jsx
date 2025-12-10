@@ -1,4 +1,4 @@
-import EditIcon from "../icons/EditIcon";
+import CheckIcon2 from "../icons/CheckIcon2";
 import WrongIcon from "../icons/WrongIcon";
 import { useState } from "react";
 const EditForm = ({ todo, onUpdateTodo, onUndoEditing }) => {
@@ -59,7 +59,7 @@ const EditForm = ({ todo, onUpdateTodo, onUndoEditing }) => {
         </div>
         <div className="flex flex-col btn-group">
           <button className="btn btn-square btn-ghost" type="submit">
-            <EditIcon />
+            <CheckIcon2 />
           </button>
           <button
             className="btn btn-square btn-ghost"
