@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SuccessMessage from "./SuccessMessage";
 import { useForm } from "react-hook-form";
 
@@ -18,14 +18,31 @@ const TodoForm = ({ onSubmit }) => {
   });
 
   const handleFormSubmit = (data) => {
-    const formData = { ...data, id: crypto.randomUUID() };
+    const formData = { ...data, id: crypto.randomUUID(), completed: false };
 
     onSubmit(formData);
+
+    // Send a success message
+    setAlertMessage((prev) => ({
+      ...prev,
+      type: "success",
+      message: "You have successfully created a new todo!",
+      status: 0,
+    }));
 
     // Clear the form
     reset();
   };
+  // Auto close after 3 seconds
+  useEffect(() => {
+    if (alertMessage.status !== 2) {
+      const timer = setTimeout(() => {
+        setAlertMessage({ type: "", message: "", status: 2 });
+      }, 2000); // 2000ms = 2 seconds
 
+      return () => clearTimeout(timer); // cleanup
+    }
+  }, [alertMessage]);
   return (
     <div>
       {alertMessage.status !== 2 && (
