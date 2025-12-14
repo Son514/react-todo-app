@@ -17,11 +17,6 @@ const TodoForm = ({ onSubmit }) => {
     status: 2, // 0: success, 1: error, 2: null
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
   const handleFormSubmit = (data) => {
     const formData = { ...data, id: crypto.randomUUID() };
 
@@ -31,16 +26,6 @@ const TodoForm = ({ onSubmit }) => {
     reset();
   };
 
-  const clearForm = () => {
-    setFormData({
-      id: crypto.randomUUID(),
-      name: "",
-      description: "",
-      dueDate: "",
-      priority: "Low",
-      completed: false,
-    });
-  };
   return (
     <div>
       {alertMessage.status !== 2 && (
