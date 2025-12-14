@@ -26,7 +26,6 @@ const TodoForm = ({ onSubmit }) => {
     reset();
   };
 
-  };
   return (
     <div>
       {alertMessage.status !== 2 && (
