@@ -2,20 +2,34 @@ import CheckIcon2 from "../icons/CheckIcon2";
 import WrongIcon from "../icons/WrongIcon";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const EditForm = ({ todo, onUpdateTodo, onUndoEditing }) => {
+  const schema = yup
+    .object()
+    .shape({
+      name: yup.string().required(),
+      description: yup.string().required(),
+      dueDate: yup.string().required(),
+      priority: yup.string().required(),
+    })
+    .required();
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm({
+    resolver: yupResolver(schema),
     defaultValues: {
       id: todo.id,
       name: todo.name,
       description: todo.description,
       dueDate: todo.dueDate,
       priority: todo.priority,
+      completed: todo.completed,
     },
   });
 

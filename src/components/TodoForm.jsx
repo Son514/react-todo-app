@@ -1,15 +1,29 @@
 import { useState } from "react";
 import SuccessMessage from "./SuccessMessage";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const TodoForm = ({ onSubmit }) => {
+  const schema = yup
+    .object()
+    .shape({
+      name: yup.string().required(),
+      description: yup.string().required(),
+      dueDate: yup.string().required(),
+      priority: yup.string().required(),
+    })
+    .required();
+
   const {
     register,
     handleSubmit,
     watch,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const [alertMessage, setAlertMessage] = useState({
     type: "", // "error", "success"
@@ -18,7 +32,7 @@ const TodoForm = ({ onSubmit }) => {
   });
 
   const handleFormSubmit = (data) => {
-    const formData = { ...data, id: crypto.randomUUID() };
+    const formData = { ...data, id: crypto.randomUUID(), completed: false };
 
     onSubmit(formData);
 
